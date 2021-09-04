@@ -9,19 +9,29 @@
 <body>
     <?php
 
-    use App\Connection\MySqlConnection;
-    use App\Utility\RandomUtilityClass;
+    // code below is used for autoload
 
-    include('autoload.php');
+    // use App\Connection\MySqlConnection;
+    // use App\Utility\RandomUtilityClass;
 
-    $mySqlConnection = new MySqlConnection();
-    $utility = new RandomUtilityClass();
+    // include('autoload.php');
+
+    // $mySqlConnection = new MySqlConnection();
+    // $utility = new RandomUtilityClass();
+
+    use App\Logging\Logger;
+    use App\Users\Customer;
+
+    require_once 'autoload.php';
+
+    $logger = new Logger();
+    $customer = new Customer();
+    $customer->setLogger($logger);
 
 
     ?>
 
-    <p><?php echo $mySqlConnection->getDatabaseUrl(); ?></p>
-    <p><?php echo $utility->status; ?></p>
+    <p><?= $customer->getLogger()->log(); ?></p>
 
 </body>
 </html>
