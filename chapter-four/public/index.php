@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoloading</title>
+    <title>Static </title>
 </head>
 <body>
     <?php
@@ -19,19 +19,32 @@
     // $mySqlConnection = new MySqlConnection();
     // $utility = new RandomUtilityClass();
 
-    use App\Logging\Logger;
-    use App\Users\Customer;
+    // Code below is used for trait example
 
-    require_once 'autoload.php';
+    // use App\Logging\Logger;
+    // use App\Users\Customer;
 
-    $logger = new Logger();
-    $customer = new Customer();
-    $customer->setLogger($logger);
+    // require_once 'autoload.php';
+
+    // $logger = new Logger();
+    // $customer = new Customer();
+    // $customer->setLogger($logger);
+
+    // Code below is used for late static binding
+
+    use App\Conference\Attendee;
+use App\Conference\Host;
+
+require_once 'autoload.php';
+
+    $jag = Attendee::create(['username' => 'Jacek']);
+
+    $gac = new Host;
 
 
     ?>
 
-    <p><?= $customer->getLogger()->log(); ?></p>
+    <p><?=  $gac->getMeta(); ?></p>
 
 </body>
 </html>
