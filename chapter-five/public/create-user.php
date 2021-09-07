@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $success = $userRepo->save($_REQUEST);
 }
 
+$timezones = DateTimeZone::listIdentifiers(); 
+
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+            <label for="user_timezone" class="form-label">Timezone</label>
+            <select class="form-select" aria-label="User timezone" id="user_timezone" name="user_timezone">
+                <option selected>Open this select menu</option>
+                <?php foreach ($timezones as $timezone): ?>
+                    <option value="<?= $timezone; ?>"><?= $timezone; ?></option>
+                <?php endforeach; ?>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

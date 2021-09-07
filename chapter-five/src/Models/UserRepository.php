@@ -2,50 +2,30 @@
 
 namespace App\Models;
 
-class UserRepository
+class UserRepository extends ModelRepository
 {
-    private $pdo;
-
-    private function getPdo(): \PDO
-    {
-
-        if ($this->pdo === null) {
-
-            $host = '127.0.0.1';
-            $dbname = 'pdo-demo';
-            $charset = 'utf8mb4';
-            $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-            $options = [
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, 
-            ]; 
-
-            try {
-
-                $this->pdo = new \PDO($dsn, $user = 'root', $passwprd = '', $options);
-            } catch (\PDOException $PDOException) {
-
-                throw new \PDOException($PDOException->getMessage(), (int) $PDOException->getCode());
-
-            }
-
-        }
-
-        return $this->pdo;
-
-    }
 
     public function save(array $userData)
     {
-        $sql = 'INSERT INTO users (name, email) VALUES (:name, :email)';
+        $sql = 'INSERT INTO users (name, email, user_timezone) VALUES (:name, :email, :user_timezone)';
         $stmt = $this->getPdo()->prepare($sql);
-        $stmt->execute(['name' => $userData['name'], 'email' => $userData['email']]);
+        $stmt->execute([
+            'name'              => $userData['name'], 
+            'email'             => $userData['email'], 
+            'user_timezone'     => $userData['user_timezone'],
+        ]);
         
         // $count = $pdo->query('SELECT count(*) from users')->fetchColumn();
         // return $count;
 
         return $stmt->rowCount() === 1;
 
+    }
+
+    public function findAll()
+    {
+        $users = $this->getPdo()->query('SELECT * FROM users')->fetchAll(\PDO::FETCH_CLASS, User::class);
+        return $users;
     }
 
     public function findById($id): ?User
@@ -69,7 +49,7 @@ class UserRepository
         $user->setId($userData['id']);
         $user->setName($userData['name']);
         $user->setEmail($userData['email']);
-        $user->setCreated_at(date_create($userData['created_at']));
+        //$user->setCreated_at(date_create($userData['created_at']));
 
         return $user;
 
