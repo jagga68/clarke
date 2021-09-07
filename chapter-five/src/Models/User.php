@@ -6,6 +6,8 @@ class User
 {
     private int $id;
     private string $name;
+    private string $email;
+    private \DateTime $created_at;
 
 
     public function getId()
@@ -28,6 +30,30 @@ class User
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCreated_at()
+    {
+        return $this->created_at;
+    }
+
+    public function setCreated_at($created_at)
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
