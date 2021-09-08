@@ -13,7 +13,7 @@ class InventoryTest extends \PHPUnit\Framework\TestCase
         $mockRepo = $this->createMock(ProductRepository::class);
 
         $inventory = new Inventory($mockRepo);
-        
+
         $mockProductsArray = [
             ['id' => 1, 'name' => 'Acme Radio Knobs'],
             ['id' => 2, 'name' => 'Apple iPhone'],
