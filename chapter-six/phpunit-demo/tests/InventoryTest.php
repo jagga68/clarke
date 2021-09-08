@@ -1,5 +1,8 @@
 <?php
 
+use App\Inventory;
+use App\ProductRepository;
+
 class InventoryTest extends \PHPUnit\Framework\TestCase
 {
 
@@ -7,11 +10,10 @@ class InventoryTest extends \PHPUnit\Framework\TestCase
     public function testProductsCanBeSet()
     {
         // Setup
-        $mockRepo = $this->createMock(\App\ProductRepository::class);
+        $mockRepo = $this->createMock(ProductRepository::class);
 
-        $inventory = new \App\Inventory($mockRepo);
-
-
+        $inventory = new Inventory($mockRepo);
+        
         $mockProductsArray = [
             ['id' => 1, 'name' => 'Acme Radio Knobs'],
             ['id' => 2, 'name' => 'Apple iPhone'],
