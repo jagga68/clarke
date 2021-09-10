@@ -1,0 +1,1 @@
+{"version":1,"defects":{"UserTest::a_user_can_be_made_from_an_array":3,"UserRepositoryTest::a_user_can_be_retrieved_from_the_database":3},"times":{"UserTest::a_user_can_be_made_from_an_array":0.007,"UserRepositoryTest::a_user_can_be_retrieved_from_the_database":0.017}}
