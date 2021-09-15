@@ -1,0 +1,1 @@
+{"version":1,"defects":{"CollectionTest::the_Collection_class_can_count_array_values":4,"CollectionTest::a_collection_can_be_sorted_by_key":4},"times":{"CollectionTest::the_Collection_class_can_count_array_values":0.026,"CollectionTest::a_collection_can_be_sorted_by_key":0.02}}
