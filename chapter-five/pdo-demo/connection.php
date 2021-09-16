@@ -2,7 +2,7 @@
 
 
 $host = '127.0.0.1';
-$dbname = 'pdo-demo';
+$dbname = 'clarke-pdo';
 $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
 $options = [

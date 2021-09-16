@@ -14,7 +14,7 @@ abstract class ModelRepository
         if ($this->pdo === null) {
 
             $host = '127.0.0.1';
-            $dbname = 'serialization-project';
+            $dbname = 'clarke-serialization';
             $charset = 'utf8mb4';
             $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
             $options = [
